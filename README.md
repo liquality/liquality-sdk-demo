@@ -1,6 +1,12 @@
-# Liquality SDK Demo Live Demo
+# Liquality SDK Demo App
 
-https://Liquality SDK Demo.on.fleek.co/
+A simple create-react-app that showcases the Liquality SDK.
+Here you will find code implementations and examples of the following functions
+
+- Create wallet & authorization
+- Token & Balances
+- NFTs & Collectibles
+- Swap
 
 ## Run the app
 
