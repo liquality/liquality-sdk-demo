@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CreateWallet } from "../components/Auth/CreateWallet";
+import { RecoverWithoutSocial } from "../components/Auth/RecoverWithoutSocial";
 import { SignIn } from "../components/Auth/SignIn";
 import "../index.css";
 
@@ -54,6 +55,11 @@ export default function Auth({}) {
           <CreateWallet directParams={directParams} verifierMap={verifierMap} />
           <br></br>
           <SignIn directParams={directParams} verifierMap={verifierMap} />
+          <br></br>
+          <RecoverWithoutSocial
+            directParams={directParams}
+            verifierMap={verifierMap}
+          />
         </div>
       </div>
     </div>
