@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NftImages } from "../components/Collectibles/NftImages";
 import "../index.css";
 
 export default function Collectibles({ route }) {
@@ -16,9 +17,10 @@ export default function Collectibles({ route }) {
 
   return (
     <div className="align-middle text-center text-banner mb-24">
-      <div className="h-screen flex ">
+      <div style={{ padding: 20 }} className="h-screen flex ">
         <div className="grow space-y-10 self-start">
           THIS IS nft and collectibles PAGE
+          <NftImages />
         </div>
       </div>
     </div>
