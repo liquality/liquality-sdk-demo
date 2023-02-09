@@ -1,17 +1,3 @@
-# Liquality SDK Demo App
+# Liquality SDK Demo app
 
-A simple create-react-app that showcases the Liquality SDK.
-Here you will find code implementations and examples of the following functions
-
-- Create wallet & authorization
-- Token & Balances
-- NFTs & Collectibles
-- Swap
-
-## Run the app
-
-To start the project locally, run the following commands in the root folder:
-
-### `npm install`
-
-### `npm start`
+A demo app for Liquality SDK. It demonstrates the usage of all modules of the SDK.

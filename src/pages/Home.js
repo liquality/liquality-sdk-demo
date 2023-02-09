@@ -1,11 +1,5 @@
 import React from "react";
 
-import space_id from "../assets/space_id.png";
-import unstoppable_domains from "../assets/unstoppable_domains.png";
-import ens from "../assets/ens.png";
-import near from "../assets/near_logo.png";
-import pns from "../assets/pns.png";
-
 export default function Home() {
   return (
     <div className="align-middle text-center text-banner -mt-12">
