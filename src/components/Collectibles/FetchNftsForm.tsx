@@ -31,7 +31,7 @@ export const FetchNftsForm: React.FC<Props> = (props) => {
         </a>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           You can fetch NFTs for any wallet address and evm chain. Just paste
-          the chainid and wallet address and the Nfts will be displayed.
+          the chainid and wallet address and the NFTs will be displayed.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6 mt-4" action="#">
@@ -45,7 +45,7 @@ export const FetchNftsForm: React.FC<Props> = (props) => {
               type="number"
               id="ChainID"
               placeholder="Type chainID here..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
           </div>
@@ -60,14 +60,14 @@ export const FetchNftsForm: React.FC<Props> = (props) => {
               type="text"
               id="address"
               placeholder="Paste your wallet address..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
           </div>
           <div className="flex items-start">
             <div className="flex items-start">
               <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Password share will be generated
+                NFTs will be fetched and displayed below
               </label>
             </div>
           </div>
