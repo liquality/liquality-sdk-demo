@@ -20,7 +20,6 @@ export default function Collectibles({ route }) {
     <div className="align-middle text-center text-banner mb-24">
       <div style={{ padding: 20 }} className="h-screen flex ">
         <div className="grow space-y-10 self-start">
-          THIS IS nft and collectibles PAGE<br></br>
           <FetchNftsForm />
           <NftImages />
         </div>

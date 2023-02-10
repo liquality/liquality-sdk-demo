@@ -18,11 +18,24 @@ export default function Swap({ route }) {
     <div className="align-middle text-center text-banner mb-24">
       <div className="h-screen flex ">
         <div className="grow space-y-10 self-start">
+          <a
+            className="md:hover:text-purple-700"
+            href="https://docs.liquality.io/functions/oraclefees"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p
+              className="mb-4 text-4xl font-extrabold tracking-tight"
+              style={{ fontSize: 35, paddingTop: 10 }}
+            >
+              Swap
+            </p>
+          </a>
           <br></br>
           <div className="inline-flex" style={{ padding: 20 }}>
             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a
-                href="https://docs.liquality.io/functions/auth#login-and-unlock-wallet"
+                href="https://docs.liquality.io/functions/oraclefees"
                 rel="noreferrer"
                 target="_blank"
               >
