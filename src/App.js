@@ -1,5 +1,5 @@
 import { DataContext } from "./DataContext";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -11,8 +11,16 @@ import Swap from "./pages/Swap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
+  const [loginResponse, setLoginResponse] = useState({});
+
+  useEffect(() => {}, [loginResponse]);
   return (
-    <DataContext.Provider value={{ userAccountAddress: "address here" }}>
+    <DataContext.Provider
+      value={{
+        loginResponse: loginResponse,
+        setLoginResponse: setLoginResponse,
+      }}
+    >
       <Router>
         <body className="stretched device-xl bg-white no-transition">
           <Navbar />

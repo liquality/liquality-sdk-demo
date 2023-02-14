@@ -23,19 +23,33 @@ export const DisplayWalletValues: React.FC<Props> = (props) => {
             <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
               Public Address:
             </dt>
-            <dd className="text-lg font-semibold">xxxxxxxxxxx</dd>
+            <dd className="text-lg font-semibold break-all">
+              {Object.keys(loginResponse).length > 0
+                ? loginResponse?.loginResponse?.publicAddress
+                : "0x0000000000000000000000000000000000000000"}
+            </dd>
           </div>
           <div className="flex flex-col py-3">
             <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
               Private Key:
             </dt>
-            <dd className="text-lg font-semibold">xxxxxxxxxx</dd>
+            <dd className="text-lg font-semibold break-all">
+              {" "}
+              {Object.keys(loginResponse).length > 0
+                ? loginResponse?.loginResponse?.privateKey
+                : "000000000000000000000000000000000000000000"}
+            </dd>
           </div>
           <div className="flex flex-col pt-3">
             <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
               Email:
             </dt>
-            <dd className="text-lg font-semibold">xxxxxxxxxxx</dd>
+            <dd className="text-lg font-semibold break-all">
+              {" "}
+              {Object.keys(loginResponse).length > 0
+                ? loginResponse?.loginResponse?.userInfo?.email
+                : "xxxxx@gmail.com"}
+            </dd>
           </div>
         </dl>
       </div>{" "}

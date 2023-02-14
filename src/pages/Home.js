@@ -40,7 +40,7 @@ export default function Home() {
               </svg>
             </a>
 
-            <a href="https://www.npmjs.com/search?q=liquality">
+            <a href="https://www.npmjs.com/package/@liquality/wallet-sdk">
               <img
                 className="h-11"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png"
