@@ -1,6 +1,4 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-//import { AuthService } from "@liquality/wallet-sdk";
 import { Nft } from "@liquality/wallet-sdk";
 
 

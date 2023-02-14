@@ -70,6 +70,21 @@ const Navbar = () => {
               >
                 NFT & Collectibles
               </a>
+              <li>
+                <a href="/collectibles/transfer"> Transfer </a>
+              </li>
+              <li>
+                <a href="/collectibles/create-erc721-collection"> Create ERC721 Collection </a>
+              </li>
+              <li>
+                <a href="/collectibles/create-erc1155-collection"> Create ERC1155 Collection </a>
+              </li>
+              <li>
+                <a href="/collectibles/mint-erc721-collection"> Mmint ERC721 Nft </a>
+              </li>
+              <li>
+                <a href="/collectibles/mint-erc1155-collection"> Mint ERC1155 Nft </a>
+              </li>
             </li>
             <li>
               <a
