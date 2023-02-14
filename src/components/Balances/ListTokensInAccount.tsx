@@ -31,7 +31,7 @@ export const ListTokensInAccount: React.FC<Props> = (props) => {
         </a>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           You can fetch and list all of the tokens in a specific account. Just
-          paste the chainid and wallet address and the NFTs will be displayed.
+          paste the chainid and wallet address and the tokens will be displayed.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6 mt-4" action="#">
