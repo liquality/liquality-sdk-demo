@@ -45,10 +45,10 @@ export default function Auth({}) {
           <br></br>
           <SignIn directParams={directParams} verifierMap={verifierMap} />
           <br></br>
-          <RecoverWithoutSocial
+          {/*    <RecoverWithoutSocial
             directParams={directParams}
             verifierMap={verifierMap}
-          />
+          /> */}
         </div>
       </div>
     </div>
