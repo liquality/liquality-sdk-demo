@@ -3,6 +3,7 @@ import { CreateWallet } from "../components/Auth/CreateWallet";
 import { RecoverWithoutSocial } from "../components/Auth/RecoverWithoutSocial";
 import { SignIn } from "../components/Auth/SignIn";
 import "../index.css";
+import { AuthService } from "@liquality/wallet-sdk";
 
 const verifierMap: Record<string, any> = {
   google: {
@@ -23,18 +24,6 @@ const directParams = {
 };
 
 export default function Auth({}) {
-  /*   let location = useLocation();
-  const { searchInput, tableData } = location.state;
-  const [loading, setLoading] = useState();
-  const [searchTextInput, setSearchTextInput] = useState();
-
-  useEffect(() => {
-    async function fetchData() {
-      setSearchTextInput(searchInput);
-    }
-    fetchData();
-  }, [searchInput]); */
-
   return (
     <div className="align-middle text-center text-banner mb-24">
       <div className="h-screen flex ">

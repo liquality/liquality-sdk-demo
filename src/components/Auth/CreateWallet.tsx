@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { DisplayWalletValues } from "./DisplayWalletValues";
-//import { AuthService } from "@liquality/wallet-sdk";
+import { AuthService } from "@liquality/wallet-sdk";
 
 type Props = {
   directParams: any;
@@ -10,7 +10,7 @@ type Props = {
 
 export const CreateWallet: React.FC<Props> = (props) => {
   const { directParams, verifierMap } = props;
-  /*   const [tKey, setTKey] = useState<any>({});
+  const [tKey, setTKey] = useState<any>({});
   const [loginResponse, setLoginResponse] = useState<any>({});
   const [password, setPassword] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -37,57 +37,13 @@ export const CreateWallet: React.FC<Props> = (props) => {
       loginResponse.tKey,
       password
     );
+
+    console.log("response from REACT:", response);
     setNewPasswordShare(response.result);
     response.msg.startsWith("Error")
       ? setErrorMsg(response.msg)
       : setPasswordResponse(response.msg);
   };
- */
-  /*  const _renderPasswordInput = () => {
-    return (
-      <div>
-        Set password minimum 10 characters:
-        <input
-          type="password"
-          placeholder="Address"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button onClick={() => generatePassword(password)}>Set password</button>
-        <br></br>
-        {errorMsg ? <p style={{ color: "red" }}> {errorMsg}</p> : null}
-        {passwordResponse.startsWith("Error") ? (
-          <p style={{ color: "red" }}> {passwordResponse}</p>
-        ) : (
-          <p style={{ color: "green" }}>{passwordResponse}</p>
-        )}
-      </div>
-    );
-  }; */
-
-  /*   const _renderCreatedWalletDetails = () => {
-    return (
-      <div>
-        <h3 style={{ color: "green" }}>
-          Your wallet was created successfully!
-        </h3>
-        <p>
-          <b>Public Address:</b> <br></br>
-          {loginResponse.loginResponse?.publicAddress}
-        </p>
-        <p>
-          <b>Private Key:</b> <br></br>
-          {loginResponse.loginResponse?.privateKey}
-        </p>
-        <p>
-          <b>User email:</b> <br></br>{" "}
-          {loginResponse.loginResponse?.userInfo?.email}
-        </p>
-      </div>
-    );
-  }; */
 
   return (
     <div className="inline-flex" style={{ padding: 20 }}>
@@ -144,6 +100,10 @@ export const CreateWallet: React.FC<Props> = (props) => {
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div className="flex items-start">
@@ -155,6 +115,7 @@ export const CreateWallet: React.FC<Props> = (props) => {
           </div>
           <button
             type="submit"
+            onClick={() => generatePassword(password)}
             className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
           >
             Create password
