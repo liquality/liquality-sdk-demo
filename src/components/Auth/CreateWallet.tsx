@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { DisplayWalletValues } from "./DisplayWalletValues";
-//import { AuthService } from "@liquality/wallet-sdk";
+import { AuthService } from "@liquality/wallet-sdk";
+import { DataContext } from "../../DataContext";
 
 type Props = {
   directParams: any;
@@ -10,13 +11,14 @@ type Props = {
 
 export const CreateWallet: React.FC<Props> = (props) => {
   const { directParams, verifierMap } = props;
-  /*   const [tKey, setTKey] = useState<any>({});
-  const [loginResponse, setLoginResponse] = useState<any>({});
+  const [tKey, setTKey] = useState<any>({});
+  //const [loginResponse, setLoginResponse] = useState<any>({});
   const [password, setPassword] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [passwordResponse, setPasswordResponse] = useState<string>("");
   const [newPasswordShare, setNewPasswordShare] = useState<any>({});
   const authService = new AuthService();
+  const { loginResponse, setLoginResponse } = React.useContext(DataContext);
 
   useEffect(() => {
     const init = async () => {
@@ -37,57 +39,15 @@ export const CreateWallet: React.FC<Props> = (props) => {
       loginResponse.tKey,
       password
     );
+
+    console.log("response from REACT:", response);
     setNewPasswordShare(response.result);
     response.msg.startsWith("Error")
       ? setErrorMsg(response.msg)
       : setPasswordResponse(response.msg);
   };
- */
-  /*  const _renderPasswordInput = () => {
-    return (
-      <div>
-        Set password minimum 10 characters:
-        <input
-          type="password"
-          placeholder="Address"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button onClick={() => generatePassword(password)}>Set password</button>
-        <br></br>
-        {errorMsg ? <p style={{ color: "red" }}> {errorMsg}</p> : null}
-        {passwordResponse.startsWith("Error") ? (
-          <p style={{ color: "red" }}> {passwordResponse}</p>
-        ) : (
-          <p style={{ color: "green" }}>{passwordResponse}</p>
-        )}
-      </div>
-    );
-  }; */
 
-  /*   const _renderCreatedWalletDetails = () => {
-    return (
-      <div>
-        <h3 style={{ color: "green" }}>
-          Your wallet was created successfully!
-        </h3>
-        <p>
-          <b>Public Address:</b> <br></br>
-          {loginResponse.loginResponse?.publicAddress}
-        </p>
-        <p>
-          <b>Private Key:</b> <br></br>
-          {loginResponse.loginResponse?.privateKey}
-        </p>
-        <p>
-          <b>User email:</b> <br></br>{" "}
-          {loginResponse.loginResponse?.userInfo?.email}
-        </p>
-      </div>
-    );
-  }; */
+  console.log(loginResponse, "LOGINRESPONSE");
 
   return (
     <div className="inline-flex" style={{ padding: 20 }}>
@@ -107,6 +67,7 @@ export const CreateWallet: React.FC<Props> = (props) => {
         </p>
 
         <button
+          onClick={() => createNewWallet()}
           type="button"
           className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
         >
@@ -128,49 +89,52 @@ export const CreateWallet: React.FC<Props> = (props) => {
           Liquality tKey SSO
         </button>
 
-        <form className="space-y-6 mt-4" action="#">
-          <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-            Create a password
-          </h5>
+        {Object.keys(loginResponse).length > 0 ? (
+          <form className="space-y-6 mt-4" action="#">
+            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              Create a password
+            </h5>
 
-          <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Your password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          <div className="flex items-start">
-            <div className="flex items-start">
-              <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Password share will be generated
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Your password
               </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
             </div>
-          </div>
-          <button
-            type="submit"
-            className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
-          >
-            Create password
-          </button>
-          {/*  <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{" "}
-            <a
-              href="#"
-              className="text-purple-700 hover:underline dark:text-purple-500"
+            <div className="flex items-start">
+              <div className="flex items-start">
+                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Password share will be generated
+                </label>
+              </div>
+            </div>
+            <button
+              type="submit"
+              onClick={() => generatePassword(password)}
+              className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
             >
-              Create account
-            </a>
-          </div> */}
-        </form>
+              Create password
+            </button>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+              {passwordResponse}
+            </div>
+          </form>
+        ) : (
+          <div style={{ height: 300 }}></div>
+        )}
       </div>{" "}
-      <DisplayWalletValues loginResponse={{}} />
+      <DisplayWalletValues loginResponse={loginResponse} />
     </div>
   );
 };

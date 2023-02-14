@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { DisplayWalletValues } from "./DisplayWalletValues";
-//import { AuthService } from "@liquality/wallet-sdk";
+import { AuthService } from "@liquality/wallet-sdk";
+import { DataContext } from "../../DataContext";
 
 type Props = {
   directParams: any;
@@ -10,7 +11,24 @@ type Props = {
 
 export const SignIn: React.FC<Props> = (props) => {
   const { directParams, verifierMap } = props;
-  /*   const [tKey, setTKey] = useState<any>({});*/
+  const [tKey, setTKey] = useState<any>({});
+  const [password, setPassword] = useState<string>("");
+  const authService = new AuthService();
+  const { loginResponse, setLoginResponse } = React.useContext(DataContext);
+
+  const logInUsingGoogleSSO = async () => {
+    const response = await authService.loginUsingSSO(tKey, props.verifierMap);
+    setLoginResponse(response);
+  };
+
+  //Init tkey instance
+  React.useEffect(() => {
+    const init = async () => {
+      const tKeyResponse = await authService.init(props.directParams);
+      setTKey(tKeyResponse);
+    };
+    init();
+  }, [loginResponse]);
 
   return (
     <div className="inline-flex" style={{ padding: 20 }}>
@@ -33,6 +51,7 @@ export const SignIn: React.FC<Props> = (props) => {
         <br></br>
 
         <button
+          onClick={logInUsingGoogleSSO}
           type="button"
           className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
         >
@@ -54,7 +73,7 @@ export const SignIn: React.FC<Props> = (props) => {
           Liquality tKey SSO
         </button>
       </div>{" "}
-      <DisplayWalletValues loginResponse={{}} />
+      <DisplayWalletValues loginResponse={loginResponse} />
     </div>
   );
 };
