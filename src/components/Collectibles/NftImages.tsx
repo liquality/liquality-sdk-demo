@@ -1,64 +1,39 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 //import { AuthService } from "@liquality/wallet-sdk";
+import { Nft } from "@liquality/wallet-sdk";
 
-const dummyNftList = [
-  {
-    title: "NFT nr 1",
-    collectionName: "Numero 1",
-    imgUrl: "https://flowbite.com/docs/images/examples/image-4@2x.jpg",
-  },
-  {
-    title: "NFT nr 2",
-    collectionName: "Numero 2",
-    imgUrl: "https://flowbite.com/docs/images/examples/image-4@2x.jpg",
-  },
-  {
-    title: "NFT nr 3",
-    collectionName: "Numero 3",
-    imgUrl: "https://flowbite.com/docs/images/examples/image-4@2x.jpg",
-  },
-  {
-    title: "NFT nr 4",
-    collectionName: "Numero 4",
-    imgUrl: "https://flowbite.com/docs/images/examples/image-4@2x.jpg",
-  },
-  {
-    title: "NFT nr 5",
-    collectionName: "Numero 5",
-    imgUrl: "https://flowbite.com/docs/images/examples/image-4@2x.jpg",
-  },
-];
 
 type Props = {
-  nftImages: any;
+  nfts: Array<Nft>;
 };
 
 export const NftImages: React.FC<Props> = (props) => {
-  const { nftImages } = props;
-
+  const { nfts } = props;
+  const  imagePlaceholder = 'https://flowbite.com/docs/images/examples/image-4@2x.jpg'; 
   const _renderImages = () => {
     let rows = [];
-    if (dummyNftList) {
-      rows = dummyNftList.map((item, index) => {
+    if (nfts) {
+      rows = nfts.map((nft, index) => {
         return (
           <div className="rounded  p-4 h-64">
             <img
-              src={item.imgUrl}
-              alt={item.title}
+              src={nft.metadata?.image?.replace('ipfs://', 'https://ipfs.io/ipfs/') || imagePlaceholder }
+              alt={nft.metadata?.name}
               className="rounded-full w-full h-full object-cover"
             />
+            
             <div className="pt-2">
               <p className="text-xs">
                 {" "}
-                <b>Title:</b> {item.title}
+                <b>Title:</b> {nft.metadata?.name}
               </p>
               <p className="text-xs">
                 {" "}
-                <b>Collection:</b> {item.collectionName}
+                <b>Collection:</b> {nft.contract.name}
               </p>
               <p className="text-xs">
-                <b>Description:</b> {item.collectionName}
+                <b>Description:</b> {nft.metadata?.description}
               </p>
             </div>
           </div>
