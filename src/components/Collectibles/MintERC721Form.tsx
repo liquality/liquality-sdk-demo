@@ -1,6 +1,7 @@
 import { MintERC721Request } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
+import { getPrivateKey } from "../../utils";
 
 type Props = {
   onSubmit: (request: MintERC721Request, chainId: number, pk: string) => void;
@@ -12,15 +13,12 @@ export const MintERC721Form: React.FC<Props> = (props) => {
 
   const [chainId, setChainId] = useState("");
   const [contractAddress, setContractAddress] = useState("");
-  const [owner, setOwner] = useState("");
   const [recipient, setRecipient] = useState("");  
   const [uri, setUri] = useState("");
 
-  const pk = "";
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({contractAddress, recipient, owner, uri}, +chainId, pk );
+    onSubmit({contractAddress, recipient, uri}, +chainId, getPrivateKey() );
   };
 
   return (
@@ -64,20 +62,6 @@ export const MintERC721Form: React.FC<Props> = (props) => {
               type="text"
               id="address"
               placeholder="Paste token address..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Your Wallet Address
-            </label>
-            <input
-              value={owner}
-              onChange={(event) => setOwner(event.target.value)}
-              type="text"
-              id="address"
-              placeholder="Paste your wallet address..."
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />

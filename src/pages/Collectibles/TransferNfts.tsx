@@ -1,7 +1,7 @@
 import { NftService } from "@liquality/wallet-sdk";
 import { useState } from "react";
 import "../../index.css";
-import { TransferRequest } from "@liquality/wallet-sdk/dist/src/types";
+import { TransferRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import { TransferNftsForm } from "../../components/Collectibles/TransferNftsForm";
 
 

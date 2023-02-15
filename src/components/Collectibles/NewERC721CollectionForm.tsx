@@ -1,10 +1,7 @@
 import { CreateERC721CollectionRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
-import { setupSDK } from "../../setupSDK";
-
-setupSDK();
-
+import { getPrivateKey } from "../../utils";
 
 type Props = {
   onSubmit:(request: CreateERC721CollectionRequest, chainId: number, pk: string) => Promise<void>;
@@ -18,12 +15,10 @@ export const NewERC721CollectionForm: React.FC<Props> = (props) => {
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");  
 
-  const pk = "";
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     
     event.preventDefault();
-    await onSubmit({tokenName, tokenSymbol}, +chainId, pk );
+    await onSubmit({tokenName, tokenSymbol}, +chainId, getPrivateKey() );
   };
 
   return (

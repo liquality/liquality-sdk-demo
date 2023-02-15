@@ -14,7 +14,7 @@ import NewERC721Collection from "./pages/Collectibles/NewERC721Collection";
 import NewERC1155Collection from "./pages/Collectibles/NewERC1155Collection";
 import MintERC721 from "./pages/Collectibles/MintERC721";
 import MintERC1155 from "./pages/Collectibles/MintERC1155";
-import { setupSDK } from "./setupSDK";
+import { setupSDK } from "./utils";
 
 function App() {
   setupSDK();

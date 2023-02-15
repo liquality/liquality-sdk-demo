@@ -1,6 +1,7 @@
-import { TransferRequest } from "@liquality/wallet-sdk/dist/src/types";
+import { TransferRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
+import { getPrivateKey } from "../../utils";
 
 type Props = {
   onSubmit: (transferRequest: TransferRequest, chainId: number, pk: string) => void;
@@ -13,15 +14,12 @@ export const TransferNftsForm: React.FC<Props> = (props) => {
   const [chainId, setChainId] = useState("");
   const [contractAddress, setContractAddress] = useState("");
   const [receiver, setReceiver] = useState("");  
-  const [owner, setOwner] = useState("");
   const [tokenIDs, setTokenIDs] = useState("");
   const [amounts, setAmounts] = useState("");
 
-  const pk = "dasgdgadgg";
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({contractAddress, receiver, owner, tokenIDs:tokenIDs.split(','), amounts: amounts.split(',').map(amount => +amount)}, +chainId, pk );
+    onSubmit({contractAddress, receiver, tokenIDs:tokenIDs.split(','), amounts: amounts.split(',').map(amount => +amount)}, +chainId, getPrivateKey() );
   };
 
   return (
@@ -65,20 +63,6 @@ export const TransferNftsForm: React.FC<Props> = (props) => {
               type="text"
               id="address"
               placeholder="Paste token address..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Your Wallet Address
-            </label>
-            <input
-              value={owner}
-              onChange={(event) => setOwner(event.target.value)}
-              type="text"
-              id="address"
-              placeholder="Paste your wallet address..."
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
@@ -131,7 +115,7 @@ export const TransferNftsForm: React.FC<Props> = (props) => {
             type="submit"
             className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
           >
-            Fetch NFTs
+            Transfer NFTs
           </button>
           <div className="flex items-start">
             <div className="flex items-start">

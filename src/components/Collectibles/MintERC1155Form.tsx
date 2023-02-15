@@ -1,6 +1,7 @@
 import { MintERC1155Request } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
+import { getPrivateKey } from "../../utils";
 
 type Props = {
   onSubmit: (request: MintERC1155Request, chainId: number, pk: string) => void;
@@ -12,16 +13,13 @@ export const MintERC1155Form: React.FC<Props> = (props) => {
 
   const [chainId, setChainId] = useState("");
   const [contractAddress, setContractAddress] = useState("");
-  const [owner, setOwner] = useState("");
   const [recipient, setRecipient] = useState("");  
   const [id, setID] = useState("");
   const [amount, setAmount] = useState("");
 
-  const pk = "dasgdgadgg";
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({contractAddress, recipient, owner, id, amount: +amount}, +chainId, pk );
+    onSubmit({contractAddress, recipient, id, amount: +amount}, +chainId, getPrivateKey() );
   };
 
   return (
@@ -69,21 +67,6 @@ export const MintERC1155Form: React.FC<Props> = (props) => {
               required
             />
           </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Your Wallet Address
-            </label>
-            <input
-              value={owner}
-              onChange={(event) => setOwner(event.target.value)}
-              type="text"
-              id="address"
-              placeholder="Paste your wallet address..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Recipient address

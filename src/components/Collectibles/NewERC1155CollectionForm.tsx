@@ -1,6 +1,7 @@
 import { CreateERC1155CollectionRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
+import { getPrivateKey } from "../../utils";
 
 type Props = {
   onSubmit: (request: CreateERC1155CollectionRequest, chainId: number, pk: string) => void;
@@ -13,11 +14,9 @@ export const NewERC1155CollectionForm: React.FC<Props> = (props) => {
   const [chainId, setChainId] = useState("");
   const [uri, setTokenUri] = useState("");
 
-  const pk = "dasgdgadgg";
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({uri}, +chainId, pk );
+    onSubmit({uri}, +chainId, getPrivateKey() );
   };
 
   return (

@@ -13,3 +13,7 @@ export function setupSDK() {
         gasLimitMargin: 2000
     });
 }
+
+export function getPrivateKey(): string {
+    return JSON.parse(localStorage.getItem("loginResponse")!).pk;
+}
