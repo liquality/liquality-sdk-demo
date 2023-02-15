@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListTokensInAccount } from "../components/Balances/ListTokensInAccount";
 import "../index.css";
 import { NftService } from "@liquality/wallet-sdk";
-import { ERC20 } from "@liquality/wallet-sdk";
+import { ERC20Service } from "@liquality/wallet-sdk";
 
 import { setupSDK } from "../setupSDK";
 import { GetBalanceForToken } from "../components/Balances/GetBalanceForToken";
@@ -25,7 +25,10 @@ export const Balances: React.FC<Props> = (props) => {
   });
 
   const listTokensInAccount = async (address: string, chainId: string) => {
-    const accountTokens: any = await ERC20.listAccountTokens(address, +chainId);
+    const accountTokens: any = await ERC20Service.listAccountTokens(
+      address,
+      +chainId
+    );
     console.log(accountTokens, "ACCOUNT TOKENS");
     setAccountTokens(accountTokens);
   };
@@ -35,7 +38,7 @@ export const Balances: React.FC<Props> = (props) => {
     address: string,
     chainId: string
   ) => {
-    const balance: any = await ERC20.getBalance(
+    const balance: any = await ERC20Service.getBalance(
       tokenContractAddress,
       address,
       +chainId
