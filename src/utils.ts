@@ -15,5 +15,5 @@ export function setupSDK() {
 }
 
 export function getPrivateKey(): string {
-    return JSON.parse(localStorage.getItem("loginResponse")!).pk;
+    return JSON.parse(localStorage.getItem("loginResponse")!).loginResponse.privateKey;
 }
