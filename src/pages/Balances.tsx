@@ -5,16 +5,43 @@ import { NftService } from "@liquality/wallet-sdk";
 import { ERC20 } from "@liquality/wallet-sdk";
 
 import { setupSDK } from "../setupSDK";
+import { GetBalanceForToken } from "../components/Balances/GetBalanceForToken";
 
 type Props = {};
 export const Balances: React.FC<Props> = (props) => {
   //const { onSubmit } = props;
   setupSDK();
   const [accountTokens, setAccountTokens] = useState([]);
+  const [tokenBalance, setTokenBalance] = useState<{
+    tokenName: string;
+    tokenSymbol: string;
+    rawBalance: string;
+    formattedBalance: string | undefined;
+  }>({
+    tokenName: "",
+    tokenSymbol: "",
+    rawBalance: "",
+    formattedBalance: undefined,
+  });
+
   const listTokensInAccount = async (address: string, chainId: string) => {
     const accountTokens: any = await ERC20.listAccountTokens(address, +chainId);
     console.log(accountTokens, "ACCOUNT TOKENS");
     setAccountTokens(accountTokens);
+  };
+
+  const getBalanceForToken = async (
+    tokenContractAddress: string,
+    address: string,
+    chainId: string
+  ) => {
+    const balance: any = await ERC20.getBalance(
+      tokenContractAddress,
+      address,
+      +chainId
+    );
+    console.log(balance, "BALANCE TOKENS");
+    setTokenBalance(balance);
   };
 
   /*   
@@ -32,7 +59,15 @@ export const Balances: React.FC<Props> = (props) => {
         <div className="grow space-y-10 self-start">
           <ListTokensInAccount
             accountTokens={accountTokens}
-            onSubmit={listTokensInAccount}
+            listTokensInAccount={listTokensInAccount}
+          />
+
+          <br></br>
+          <br></br>
+
+          <GetBalanceForToken
+            getBalanceForToken={getBalanceForToken}
+            tokenBalance={tokenBalance}
           />
         </div>
       </div>
