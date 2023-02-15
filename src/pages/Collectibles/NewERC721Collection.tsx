@@ -1,14 +1,10 @@
 import { NftService } from "@liquality/wallet-sdk";
 import { useState } from "react";
 import "../../index.css";
-import { setupSDK } from "../../setupSDK";
-import { CreateERC721CollectionRequest } from "@liquality/wallet-sdk/dist/src/types";
 import { NewERC721CollectionForm } from "../../components/Collectibles/NewERC721CollectionForm";
-
+import { CreateERC721CollectionRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 
 export default function NewERC721Collection() {
-
-  setupSDK();
 
   const [transactionHash, setTransactionHash] = useState("");
 

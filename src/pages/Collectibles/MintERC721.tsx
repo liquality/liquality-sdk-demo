@@ -1,14 +1,12 @@
 import { NftService } from "@liquality/wallet-sdk";
 import { useState } from "react";
 import "../../index.css";
-import { setupSDK } from "../../setupSDK";
-import { MintERC721Request } from "@liquality/wallet-sdk/dist/src/types";
 import { MintERC721Form } from "../../components/Collectibles/MintERC721Form";
+import { MintERC721Request } from "@liquality/wallet-sdk/dist/src/nft/types";
 
 
 export default function MintERC721() {
 
-  setupSDK();
 
   const [transactionHash, setTransactionHash] = useState("");
 

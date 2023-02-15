@@ -16,7 +16,7 @@ export const MintERC721Form: React.FC<Props> = (props) => {
   const [recipient, setRecipient] = useState("");  
   const [uri, setUri] = useState("");
 
-  const pk = "dasgdgadgg";
+  const pk = "";
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -1,14 +1,11 @@
 import { NftService } from "@liquality/wallet-sdk";
 import { useState } from "react";
 import "../../index.css";
-import { setupSDK } from "../../setupSDK";
 import { TransferRequest } from "@liquality/wallet-sdk/dist/src/types";
 import { TransferNftsForm } from "../../components/Collectibles/TransferNftsForm";
 
 
 export default function TransferNfts() {
-
-  setupSDK();
 
   const [transactionHash, setTransactionHash] = useState("");
 

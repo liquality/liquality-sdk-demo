@@ -3,12 +3,9 @@ import { useState } from "react";
 import { FetchNftsForm } from "../../components/Collectibles/FetchNftsForm";
 import { NftImages } from "../../components/Collectibles/NftImages";
 import "../../index.css";
-import { setupSDK } from "../../setupSDK";
 
 
 export default function FetchNfts() {
-
-  setupSDK();
 
   const [nfts, setNfts] = useState([]);
 

@@ -1,9 +1,13 @@
-import { CreateERC721CollectionRequest } from "@liquality/wallet-sdk/dist/src/types";
+import { CreateERC721CollectionRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
+import { setupSDK } from "../../setupSDK";
+
+setupSDK();
+
 
 type Props = {
-  onSubmit: (request: CreateERC721CollectionRequest, chainId: number, pk: string) => void;
+  onSubmit:(request: CreateERC721CollectionRequest, chainId: number, pk: string) => Promise<void>;
   transactionHash: string;
 };
 
@@ -13,13 +17,13 @@ export const NewERC721CollectionForm: React.FC<Props> = (props) => {
   const [chainId, setChainId] = useState("");
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");  
-  const [creator, setCreator] = useState("");
 
-  const pk = "dasgdgadgg";
+  const pk = "";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    
     event.preventDefault();
-    onSubmit({tokenName, tokenSymbol, creator}, +chainId, pk );
+    await onSubmit({tokenName, tokenSymbol}, +chainId, pk );
   };
 
   return (
@@ -72,25 +76,11 @@ export const NewERC721CollectionForm: React.FC<Props> = (props) => {
               Token Symbol
             </label>
             <input
-              value={tokenName}
+              value={tokenSymbol}
               onChange={(event) => setTokenSymbol(event.target.value)}
               type="text"
               id="address"
               placeholder="Paste token symbol..."
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Creator
-            </label>
-            <input
-              value={creator}
-              onChange={(event) => setCreator(event.target.value)}
-              type="text"
-              id="address"
-              placeholder="Paste your wallet address..."
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />

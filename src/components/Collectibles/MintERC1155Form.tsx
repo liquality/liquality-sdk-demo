@@ -1,4 +1,4 @@
-import { MintERC1155Request } from "@liquality/wallet-sdk/dist/src/types";
+import { MintERC1155Request } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
 
