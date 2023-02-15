@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Collectibles from "./pages/Collectibles";
 import Swap from "./pages/Swap";
+import IpfsRouter from "ipfs-react-router";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Balances } from "./pages/Balances";
@@ -26,7 +27,7 @@ function App() {
         setLoginResponse: setLoginResponse,
       }}
     >
-      <Router>
+      <IpfsRouter>
         <body className="stretched device-xl bg-white no-transition">
           <Navbar />
           <Routes>
@@ -39,7 +40,7 @@ function App() {
           </Routes>
         </body>
         {/* <Footer /> */}
-      </Router>
+      </IpfsRouter>
     </DataContext.Provider>
   );
 }
