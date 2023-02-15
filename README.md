@@ -5,4 +5,4 @@ A demo app for Liquality SDK. It demonstrates the usage of all modules of the SD
 # Run the app
 
 `npm install`
-`npm start
+`npm start`
