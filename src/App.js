@@ -4,16 +4,21 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import Balances from "./pages/Balances";
 import Collectibles from "./pages/Collectibles";
 import Swap from "./pages/Swap";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Balances } from "./pages/Balances";
 
 function App() {
-  const [loginResponse, setLoginResponse] = useState({});
+  const [loginResponse, setLoginResponse] = useState(
+    JSON.parse(localStorage.getItem("loginResponse")) || {}
+  );
 
-  useEffect(() => {}, [loginResponse]);
+  useEffect(() => {
+    localStorage.setItem("loginResponse", JSON.stringify(loginResponse));
+  }, [loginResponse]);
+
   return (
     <DataContext.Provider
       value={{
