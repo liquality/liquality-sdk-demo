@@ -49,7 +49,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#/auth"
+                href="/auth"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Create & Auth
@@ -57,7 +57,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#/balances"
+                href="/balances"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Tokens & Balances
@@ -65,7 +65,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#/collectibles"
+                href="/collectibles"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 NFT & Collectibles
@@ -73,7 +73,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#/swap"
+                href="/swap"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Swap
