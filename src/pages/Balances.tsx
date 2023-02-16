@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ListTokensInAccount } from "../components/Balances/ListTokensInAccount";
 import "../index.css";
 import { NftService } from "@liquality/wallet-sdk";
 import { ERC20Service } from "@liquality/wallet-sdk";
 
-import { setupSDK } from "../setupSDK";
 import { GetBalanceForToken } from "../components/Balances/GetBalanceForToken";
 
 type Props = {};
 export const Balances: React.FC<Props> = (props) => {
   //const { onSubmit } = props;
-  setupSDK();
   const [accountTokens, setAccountTokens] = useState([]);
   const [tokenBalance, setTokenBalance] = useState<{
     tokenName: string;
