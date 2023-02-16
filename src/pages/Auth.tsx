@@ -31,14 +31,14 @@ const verifierMap: Record<string, any> = {
     name: "Google",
     typeOfLogin: "google",
     clientId:
-      "852640103435-0qhvrgpkm66c9hu0co6edkhao3hrjlv3.apps.googleusercontent.com",
+      "852640103435-ije11l9aksudem6m5jb7ur860kqth6ht.apps.googleusercontent.com",
     verifier: "liquality-google-testnet",
   },
 };
 
 // 1. Setup Service Provider
 const directParams = {
-  baseUrl: `http://localhost:3005/serviceworker`,
+  baseUrl: `https://liquality-sdk-demo.on.fleek.co/#auth/serviceworker`,
   enableLogging: true,
   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
   network: "testnet" as any,
