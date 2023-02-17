@@ -18,6 +18,17 @@ const Navbar = () => {
     }
   };
 
+  var shortAddress = "Sign in";
+  const connectedAccount = JSON.parse(
+    localStorage.getItem("loginResponse")
+  ).loginResponse;
+  if (connectedAccount) {
+    shortAddress =
+      String(connectedAccount.publicAddress).substr(0, 5) +
+      "..." +
+      String(connectedAccount.publicAddress).substr(38, 4);
+  }
+
   console.log(nftMenuClass, "NFT MENU CLASS", showNftMenu);
   return (
     <nav className="px-2 bg-white border-docsGrey-200 dark:bg-docsGrey-900 sticky top-0 shadow-md mt-1 pt-2 pb-2 z-10">
@@ -81,7 +92,6 @@ const Navbar = () => {
                 Tokens & Balances
               </a>
             </li>
-
             <div className="relative inline-block">
               <button
                 onClick={setShowDropdown}
@@ -132,13 +142,21 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-
             <li>
               <a
                 href="/swap"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Swap
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/auth"
+                className="block py-2 pr-4 pl-3 text-purple-700 rounded hover:bg-purple-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-purple-400 md:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                {shortAddress}
               </a>
             </li>
           </ul>
