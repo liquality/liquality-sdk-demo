@@ -1,6 +1,24 @@
 import React from "react";
 
 const Navbar = () => {
+  const [showNftMenu, setShowNftMenu] = React.useState(false);
+  const [nftMenuClass, setNftMenuClass] = React.useState(
+    "absolute z-10 hidden py-2 mt-1 bg-white rounded-md shadow-lg"
+  );
+
+  const setShowDropdown = () => {
+    if (!showNftMenu) {
+      setShowNftMenu(true);
+      setNftMenuClass("absolute z-10 py-2 mt-1 bg-white rounded-md shadow-lg");
+    } else {
+      setShowNftMenu(false);
+      setNftMenuClass(
+        "absolute z-10 hidden py-2 mt-1 bg-white rounded-md shadow-lg"
+      );
+    }
+  };
+
+  console.log(nftMenuClass, "NFT MENU CLASS", showNftMenu);
   return (
     <nav className="px-2 bg-white border-docsGrey-200 dark:bg-docsGrey-900 sticky top-0 shadow-md mt-1 pt-2 pb-2 z-10">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -27,9 +45,9 @@ const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </button>
@@ -63,29 +81,58 @@ const Navbar = () => {
                 Tokens & Balances
               </a>
             </li>
-            <li>
-              <a
-                href="/collectibles"
-                className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
+
+            <div className="relative inline-block">
+              <button
+                onClick={setShowDropdown}
+                className="py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 NFT & Collectibles
-              </a>
-              <li>
-                <a href="/collectibles/transfer"> Transfer </a>
-              </li>
-              <li>
-                <a href="/collectibles/create-erc721-collection"> Create ERC721 Collection </a>
-              </li>
-              <li>
-                <a href="/collectibles/create-erc1155-collection"> Create ERC1155 Collection </a>
-              </li>
-              <li>
-                <a href="/collectibles/mint-erc721-collection"> Mmint ERC721 Nft </a>
-              </li>
-              <li>
-                <a href="/collectibles/mint-erc1155-collection"> Mint ERC1155 Nft </a>
-              </li>
-            </li>
+              </button>
+              <ul className={nftMenuClass}>
+                <li>
+                  <a
+                    href="/collectibles/transfer"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Transfer
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/collectibles/create-erc721-collection"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Create ERC721 Collection
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/collectibles/create-erc1155-collection"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Create ERC1155 Collection
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/collectibles/mint-erc721-collection"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Mint ERC721 Nft
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/collectibles/mint-erc1155-collection"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Mint ERC1155 Nft
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <li>
               <a
                 href="/swap"
