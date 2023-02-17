@@ -6,7 +6,7 @@ import "../index.css";
 import { AuthService } from "@liquality/wallet-sdk";
 
 //FOR DEVELOPMENT PLEASE USE THESE
-const verifierMap: Record<string, any> = {
+/* const verifierMap: Record<string, any> = {
   google: {
     name: "Google",
     typeOfLogin: "google",
@@ -22,10 +22,10 @@ const directParams = {
   enableLogging: true,
   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
   network: "testnet" as any,
-};
+}; */
 
 //FOR LIVE HOSTING/PRODUCTION SITE PLS USE THIS
-/* const verifierMap: Record<string, any> = {
+const verifierMap: Record<string, any> = {
   google: {
     name: "Google",
     typeOfLogin: "google",
@@ -37,12 +37,12 @@ const directParams = {
 
 // 1. Setup Service Provider
 const directParams = {
-  baseUrl: `https://liquality-sdk-demo.vercel.app/auth/serviceworker`,
+  baseUrl: `https://demo.liquality.io/auth/serviceworker`,
   enableLogging: true,
   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
   network: "testnet" as any,
 };
- */
+
 export default function Auth({}) {
   return (
     <div className="align-middle text-center text-banner mb-24">

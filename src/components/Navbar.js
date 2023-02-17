@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   var shortAddress = "Sign in";
-  const connectedAccount = JSON.parse(
+  /*   const connectedAccount = JSON.parse(
     localStorage.getItem("loginResponse")
   ).loginResponse;
   if (connectedAccount) {
@@ -27,7 +27,7 @@ const Navbar = () => {
       String(connectedAccount.publicAddress).substr(0, 5) +
       "..." +
       String(connectedAccount.publicAddress).substr(38, 4);
-  }
+  } */
 
   console.log(nftMenuClass, "NFT MENU CLASS", showNftMenu);
   return (
