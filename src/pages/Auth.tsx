@@ -30,8 +30,8 @@ const verifierMap: Record<string, any> = {
     name: "Google",
     typeOfLogin: "google",
     clientId:
-      "852640103435-ije11l9aksudem6m5jb7ur860kqth6ht.apps.googleusercontent.com",
-    verifier: "liquality-google-demo",
+      "852640103435-0qhvrgpkm66c9hu0co6edkhao3hrjlv3.apps.googleusercontent.com",
+    verifier: "liquality-google-testnet",
   },
 };
 
