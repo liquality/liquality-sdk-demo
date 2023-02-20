@@ -1,6 +1,8 @@
 import React from "react";
 
 const Navbar = () => {
+  const [address, setAddress] = React.useState("Sign in");
+
   const [showNftMenu, setShowNftMenu] = React.useState(false);
   const [nftMenuClass, setNftMenuClass] = React.useState(
     "absolute z-10 hidden py-2 mt-1 bg-white rounded-md shadow-lg"
@@ -18,16 +20,20 @@ const Navbar = () => {
     }
   };
 
-  var shortAddress = "Sign in";
-  /*   const connectedAccount = JSON.parse(
-    localStorage.getItem("loginResponse")
-  ).loginResponse;
-  if (connectedAccount) {
-    shortAddress =
-      String(connectedAccount.publicAddress).substr(0, 5) +
-      "..." +
-      String(connectedAccount.publicAddress).substr(38, 4);
-  } */
+  React.useEffect(() => {
+    if (localStorage.getItem("loginResponse")) {
+      const connectedAccount = JSON.parse(
+        localStorage.getItem("loginResponse")
+      ).loginResponse;
+      if (connectedAccount) {
+        setAddress(
+          String(connectedAccount.publicAddress).substr(0, 5) +
+            "..." +
+            String(connectedAccount.publicAddress).substr(38, 4)
+        );
+      }
+    }
+  }, [address]);
 
   console.log(nftMenuClass, "NFT MENU CLASS", showNftMenu);
   return (
@@ -156,7 +162,7 @@ const Navbar = () => {
                 href="/auth"
                 className="block py-2 pr-4 pl-3 text-purple-700 rounded hover:bg-purple-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-purple-400 md:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                {shortAddress}
+                {address}
               </a>
             </li>
           </ul>
