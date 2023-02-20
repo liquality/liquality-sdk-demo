@@ -31,7 +31,7 @@ const verifierMap: Record<string, any> = {
     typeOfLogin: "google",
     clientId:
       "852640103435-ije11l9aksudem6m5jb7ur860kqth6ht.apps.googleusercontent.com",
-    verifier: "liquality-google-testnet",
+    verifier: "liquality-google-demo",
   },
 };
 
