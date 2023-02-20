@@ -1,3 +1,4 @@
+import { TransactionService } from "@liquality/wallet-sdk";
 import { CreateERC1155CollectionRequest } from "@liquality/wallet-sdk/dist/src/nft/types";
 import * as React from "react";
 import { useState } from "react";
@@ -19,6 +20,15 @@ export const NewERC1155CollectionForm: React.FC<Props> = (props) => {
     onSubmit({uri}, +chainId, getPrivateKey() );
   };
 
+  const checkStatus = async () => {
+    if(transactionHash){
+      const status = await TransactionService.getTransactionStatus(transactionHash, +chainId);
+      alert(JSON.stringify(status));
+    }else{
+      alert('You have not initiated any transaction');
+    }
+  }
+  
   return (
     <div className="inline-flex" style={{ padding: 20 }}>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -72,9 +82,15 @@ export const NewERC1155CollectionForm: React.FC<Props> = (props) => {
           </button>
           <div className="flex items-start">
             <div className="flex items-start">
-              <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Transaction Hash will be displayed here: {transactionHash}
+            <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                { !transactionHash &&  'Transaction Hash will be displayed here'} {transactionHash}
               </label>
+              <button onClick={checkStatus}
+                  type="button"
+                  className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
+                >
+                  Check Status.
+              </button>
             </div>
           </div>
         </form>

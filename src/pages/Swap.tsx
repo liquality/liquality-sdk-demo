@@ -14,7 +14,7 @@ export default function Swap() {
   const tokenAddresses = {
     [Tokens.ETH]: "0x0000000000000000000000000000000000000000",
     
-    [Tokens.USDT]: "0x6cf3df5d00e842aab1eb504bcf01ebf81646f7b7"
+    [Tokens.USDT]: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
   }
 
   const [fromToken, setFromToken] = useState('');
@@ -22,12 +22,30 @@ export default function Swap() {
   const [recipient, setRecipient] = useState('');
 
 
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
+  const [minAmount, setMinAmount] = useState(0);
+
+  const getQuote = async () =>  {
+     if(fromToken && amount && toToken) {
+      const quote = await SwapService.getQuote({srcChainId: 1, srcChainTokenIn:fromToken, srcChainTokenInAmount: amount, dstChainId: 1, dstChainTokenOut: toToken});
+      setMinAmount(+quote.minAmount);
+     }
+  }
+
+  const checkStatus = async () => {
+    if(transactionHash){
+      const status = await SwapService.getSwapStatus({txHash: transactionHash, srcChainId: 1, dstChainId: 1});
+      alert(JSON.stringify(status));
+    }else{
+      alert('You have not initiated any transaction');
+    }
+  }
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if(fromToken && amount && toToken && recipient) {
-      const hash:  any = await SwapService.swap({srcChainId: 1, srcChainTokenIn:fromToken, srcChainTokenInAmount:`${amount}`, dstChainId: 1, dstChainTokenOut: toToken, dstChainTokenOutRecipient: recipient}, getPrivateKey());
+      const hash:  any = await SwapService.swap({srcChainId: 1, srcChainTokenIn:fromToken, srcChainTokenInAmount:amount, dstChainId: 1, dstChainTokenOut: toToken, dstChainTokenOutRecipient: recipient}, getPrivateKey());
       setTransactionHash(hash.swapTxHash);
     }
   }
@@ -89,9 +107,9 @@ export default function Swap() {
                   <br></br>
                   <div className="mb-3">
                     <input
-                      onChange={(e) => setAmount(+e.target.value)}
+                      onChange={(e) => setAmount(e.target.value)}
                       value={amount}
-                      type="number"
+                      type="text"
                       id="amount"
                       placeholder="0"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -115,6 +133,17 @@ export default function Swap() {
                      <option value={tokenAddresses[token]}>{token}</option>
                     )}
                   </select>
+                  <br></br>
+                  <div className="mb-3">
+                    <input
+                      value={minAmount}
+                      type="number"
+                      id="minAmount"
+                      placeholder="0"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -132,6 +161,12 @@ export default function Swap() {
                       required
                     />
                 </div>
+                <button onClick={getQuote}
+                  type="button"
+                  className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
+                >
+                  Get Quote
+                </button>
                 <button
                   type="submit"
                   className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
@@ -141,8 +176,14 @@ export default function Swap() {
                 <div className="flex items-start">
             <div className="flex items-start">
               <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Transaction Hash will be displayed here: {transactionHash}
+                { !transactionHash &&  'Transaction Hash will be displayed here'} {transactionHash}
               </label>
+              <button onClick={checkStatus}
+                  type="button"
+                  className="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:hover:bg-purple-700 dark:focus:ring-purple-900 mr-2 mb-2"
+                >
+                  Check Status.
+              </button>
             </div>
           </div>
 
