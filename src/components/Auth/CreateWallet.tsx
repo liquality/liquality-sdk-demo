@@ -21,6 +21,7 @@ export const CreateWallet: React.FC<Props> = (props) => {
 
   useEffect(() => {
     const init = async () => {
+      const registration = tryRegisterSW("/serviceworker/sw.js");
       const tKeyResponse = await AuthService.init(directParams);
       setTKey(tKeyResponse);
     };
