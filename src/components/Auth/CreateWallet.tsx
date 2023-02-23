@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { DisplayWalletValues } from "./DisplayWalletValues";
-import { AuthService } from "@liquality/wallet-sdk";
+import { AuthService, tryRegisterSW } from "@liquality/wallet-sdk";
 import { DataContext } from "../../DataContext";
 
 type Props = {
@@ -17,12 +17,11 @@ export const CreateWallet: React.FC<Props> = (props) => {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [passwordResponse, setPasswordResponse] = useState<string>("");
   const [newPasswordShare, setNewPasswordShare] = useState<any>({});
-  const authService = new AuthService();
   const { loginResponse, setLoginResponse } = React.useContext(DataContext);
 
   useEffect(() => {
     const init = async () => {
-      const tKeyResponse = await authService.init(directParams);
+      const tKeyResponse = await AuthService.init(directParams);
       setTKey(tKeyResponse);
     };
 
@@ -30,12 +29,12 @@ export const CreateWallet: React.FC<Props> = (props) => {
   }, [loginResponse, passwordResponse]);
 
   const createNewWallet = async () => {
-    const response = await authService.createWallet(tKey, verifierMap);
+    const response = await AuthService.createWallet(tKey, verifierMap);
     setLoginResponse(response);
   };
 
   const generatePassword = async (password: string) => {
-    let response = await authService.generateNewShareWithPassword(
+    let response = await AuthService.generateNewShareWithPassword(
       loginResponse.tKey,
       password
     );
