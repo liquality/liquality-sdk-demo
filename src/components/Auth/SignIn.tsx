@@ -13,18 +13,17 @@ export const SignIn: React.FC<Props> = (props) => {
   const { directParams, verifierMap } = props;
   const [tKey, setTKey] = useState<any>({});
   const [password, setPassword] = useState<string>("");
-  const authService = new AuthService();
   const { loginResponse, setLoginResponse } = React.useContext(DataContext);
 
   const logInUsingGoogleSSO = async () => {
-    const response = await authService.loginUsingSSO(tKey, props.verifierMap);
+    const response = await AuthService.loginUsingSSO(tKey, props.verifierMap);
     setLoginResponse(response);
   };
 
   //Init tkey instance
   React.useEffect(() => {
     const init = async () => {
-      const tKeyResponse = await authService.init(props.directParams);
+      const tKeyResponse = await AuthService.init(props.directParams);
       setTKey(tKeyResponse);
     };
     init();
