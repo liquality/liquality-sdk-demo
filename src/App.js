@@ -37,16 +37,16 @@ function App() {
       <body className="stretched device-xl bg-white no-transition">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/balances" element={<Balances />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Auth />} />
+          {/* <Route path="/balances" element={<Balances />} />
           <Route path="/collectibles" element={<FetchNfts />} />
           <Route path="/collectibles/transfer" element={<TransferNfts />} />
           <Route path="/collectibles/create-erc721-collection" element={<NewERC721Collection />} />
           <Route path="/collectibles/create-erc1155-collection" element={<NewERC1155Collection />} />
           <Route path="/collectibles/mint-erc721-collection" element={<MintERC721 />} />
           <Route path="/collectibles/mint-erc1155-collection" element={<MintERC1155 />} />          
-          <Route path="/swap" element={<Swap />} />
+          <Route path="/swap" element={<Swap />} /> */}
         </Routes>
       </body>
     </DataContext.Provider>

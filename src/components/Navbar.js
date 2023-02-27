@@ -73,7 +73,7 @@ const Navbar = () => {
           id="navbar-multi-level"
         >
           <ul className="flex flex-col p-4 mt-4 bg-docsGrey-50 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-docsGrey-800 md:dark:bg-docsGrey-900 dark:border-docsGrey-700">
-            <li>
+            {/* <li>
               <a
                 href="/"
                 className="block py-2 pr-4 pl-3 text-purple bg-purple-700 rounded md:bg-transparent md:text-purple-700 md:p-0 md:dark:text-purple dark:bg-purple-600 md:dark:bg-transparent"
@@ -84,7 +84,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="/auth"
+                href="/"
                 className="block py-2 pr-4 pl-3 text-docsGrey-700 rounded hover:bg-docsGrey-100 md:hover:bg-transparent md:border-0 md:hover:text-purple-700 md:p-0 dark:text-docsGrey-400 md:dark:hover:text-white dark:hover:bg-docsGrey-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Create & Auth
@@ -163,8 +163,8 @@ const Navbar = () => {
               >
                 Swap
               </a>
-            </li>
-
+            </li>{" "}
+            */}
             <li>
               <a
                 href="/auth"
