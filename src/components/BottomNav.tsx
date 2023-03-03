@@ -12,7 +12,7 @@ import HomeSelected from "../assets/homeSelected.svg";
 import LeadSelected from "../assets/leadSelected.svg";
 import QuestsSelected from "../assets/questsSelected.png";
 
-export default function BottomNav() {
+export default function BottomNav({ color = "transparent" }) {
   const location = useLocation();
   const navigate = useNavigate();
   const page = location.pathname;
@@ -31,6 +31,10 @@ export default function BottomNav() {
         width: "100%",
         marginTop: "auto",
         maxWidth: "500px",
+        position: "fixed",
+        bottom: "15px",
+        background: color,
+        paddingX: "14px",
       }}
     >
       <IconButton

@@ -20,11 +20,12 @@ export default function Explore() {
       <Box
         sx={{
           ...styles.skeleton,
+          justifyContent: "flex-start",
           paddingTop: "116px",
           background: "#C6B5D0",
         }}
       >
-        <Navbar fullNav={true} />
+        <Navbar fullNav={true} color="#C6B5D0" />
         {cards.map((card, index) => (
           <Card
             key={`card-${index}`}
@@ -33,7 +34,7 @@ export default function Explore() {
             sx={{ marginBottom: "11px" }}
           />
         ))}
-        <BottomNav />
+        <BottomNav color="#C6B5D0" />
       </Box>
     </Box>
   );

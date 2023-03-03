@@ -14,7 +14,7 @@ const pages = {
   "/lead": "Leaderboard",
   "/explore": "Explore",
 };
-const Navbar = ({ fullNav = false }) => {
+const Navbar = ({ fullNav = false, color = "transparent" }) => {
   const location = useLocation();
   let page = pages[location.pathname] ? pages[location.pathname] : "Home";
 
@@ -26,9 +26,11 @@ const Navbar = ({ fullNav = false }) => {
         alignItems: "center",
         padding: "18px 14px",
         position: "fixed",
+        background: color,
         top: 0,
         width: "100%",
         maxWidth: "768px",
+        zIndex: 2,
       }}
     >
       <Box sx={{ width: "70px", height: "auto" }}>

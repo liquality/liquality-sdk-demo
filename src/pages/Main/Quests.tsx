@@ -27,11 +27,12 @@ export default function Quests() {
       <Box
         sx={{
           ...styles.skeleton,
+          justifyContent: "flex-start",
           paddingTop: "116px",
           background: "#C6B5D0",
         }}
       >
-        <Navbar fullNav={true} />
+        <Navbar fullNav={true} color="#C6B5D0" />
         <ButtonInput
           type="secondary"
           value={search}
@@ -49,7 +50,7 @@ export default function Quests() {
           Search
         </ButtonInput>
         <QuestCard quest={quest} />
-        <BottomNav />
+        <BottomNav color="#C6B5D0" />
       </Box>
     </Box>
   );

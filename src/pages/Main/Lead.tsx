@@ -30,14 +30,6 @@ const quest = [
     points: 300,
   },
   {
-    name: "sheFiMember",
-    points: 240,
-  },
-  {
-    name: "serenityIssa",
-    points: 150,
-  },
-  {
     name: "herDAOMember",
     points: 100,
   },
@@ -65,6 +57,7 @@ export default function Lead() {
         sx={{
           ...styles.skeleton,
           paddingTop: "116px",
+          justifyContent: "flex-start",
           background:
             "linear-gradient(180deg, #C6B5D0 0%, #29ADCC 55.73%, #4F0484 100%)",
           maxWidth: "768px",

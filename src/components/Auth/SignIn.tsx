@@ -60,7 +60,7 @@ export const SignIn: React.FC<Props> = (props) => {
             }}
             src={Liq}
             alt="Liquality logo"
-          />{" "}
+          />
           SIGN IN
         </Button>
       ) : (
