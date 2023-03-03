@@ -6,6 +6,25 @@ import { DataContext } from "../../Context";
 import { CreateWallet } from "../../components/Auth/CreateWallet";
 import { SignIn } from "../../components/Auth/SignIn";
 //FOR DEVELOPMENT PLEASE USE THESE
+// const verifierMap: Record<string, any> = {
+//   google: {
+//     name: "Google",
+//     typeOfLogin: "google",
+//     clientId:
+//       "852640103435-0qhvrgpkm66c9hu0co6edkhao3hrjlv3.apps.googleusercontent.com",
+//     verifier: "liquality-google-testnet",
+//   },
+// };
+
+// // 1. Setup Service Provider
+// const directParams = {
+//   baseUrl: `http://localhost:3005/serviceworker`,
+//   enableLogging: true,
+//   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
+//   network: "testnet" as any,
+// };
+
+//FOR LIVE HOSTING/PRODUCTION SITE PLS USE THIS
 const verifierMap: Record<string, any> = {
   google: {
     name: "Google",
@@ -18,7 +37,7 @@ const verifierMap: Record<string, any> = {
 
 // 1. Setup Service Provider
 const directParams = {
-  baseUrl: `http://localhost:3005/serviceworker`,
+  baseUrl: `https://demo.liquality.io/serviceworker`,
   enableLogging: true,
   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
   network: "testnet" as any,

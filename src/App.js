@@ -108,25 +108,23 @@ export default function App() {
           }}
         >
           <Routes>
-            {name ? (
-              <>
-                <Route path="/" element={<Home />} />
-                <Route path="/explore" element={<Explore />} />
-                <Route path="/quests" element={<Quests />} />
-                <Route path="/lead" element={<Lead />} />
-                <Route path="/*" element={<Home />} />
-              </>
+            {/* {name ? (
+              <> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/quests" element={<Quests />} />
+            <Route path="/lead" element={<Lead />} />
+            {/* </>
             ) : (
-              <>
-                <Route path="/" element={<Welcome />} />
-                <Route path="/start" element={<GetStarted />} />
-                <Route path="/mint" element={<MintInstructions />} />
-                <Route path="/profile" element={<Profile />} />
-                {/* <Route path="/auth" element={<Auth />} /> */}
-                <Route path="/home" element={<Home />} />
-                <Route path="*" element={<Welcome />} />
-              </>
-            )}
+              <> */}
+            <Route path="/" element={<Welcome />} />
+            <Route path="/start" element={<GetStarted />} />
+            <Route path="/mint" element={<MintInstructions />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Home />} />
+            {/* </> */}
+            {/* )} */}
           </Routes>
         </CardsContext.Provider>
       </DataContext.Provider>

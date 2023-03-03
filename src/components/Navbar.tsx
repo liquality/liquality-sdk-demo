@@ -8,13 +8,15 @@ import Pin from "../assets/pin.png";
 
 import { styles } from "../styles";
 
+const pages = {
+  "/home": "Home",
+  "/quests": "Your Quests",
+  "/lead": "Leaderboard",
+  "/explore": "Explore",
+};
 const Navbar = ({ fullNav = false }) => {
   const location = useLocation();
-
-  const page = location.pathname[1]
-    ? location.pathname[1].toUpperCase() +
-      location.pathname.substring(2, location.pathname.length)
-    : "Home";
+  let page = pages[location.pathname] ? pages[location.pathname] : "Home";
 
   return (
     <Box
