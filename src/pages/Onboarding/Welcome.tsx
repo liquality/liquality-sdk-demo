@@ -37,7 +37,7 @@ const verifierMap: Record<string, any> = {
 
 // 1. Setup Service Provider
 const directParams = {
-  baseUrl: `https://demo.liquality.io/serviceworker`,
+  baseUrl: `https://inquisitive-dusk-bbe67f.netlify.app/serviceworker`,
   enableLogging: true,
   networkUrl: "https://goerli.infura.io/v3/a8684b771e9e4997a567bbd7189e0b27",
   network: "testnet" as any,
