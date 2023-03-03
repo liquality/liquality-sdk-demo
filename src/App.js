@@ -116,7 +116,7 @@ export default function App() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/quests" element={<Quests />} />
             <Route path="/lead" element={<Lead />} />
-            <Route path="*" element={<Home />} />
+            {/* <Route path="*" element={<Home />} /> */}
           </Routes>
         </CardsContext.Provider>
       </DataContext.Provider>
