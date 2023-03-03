@@ -4,12 +4,11 @@ import { Box } from "@mui/material";
 import { styles } from "../../styles";
 import { CardsContext } from "../../Context";
 
-import { Button } from "../../components/Button";
 import { Card } from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import BottomNav from "../../components/BottomNav";
 
-export default function Home() {
+export default function Explore() {
   const { cards } = useContext(CardsContext);
 
   return (
@@ -26,25 +25,14 @@ export default function Home() {
         }}
       >
         <Navbar fullNav={true} />
-
-        <Button
-          onClick={() => {}}
-          variant="secondary"
-          sx={{ marginBottom: "37px", color: "#88679F" }}
-        >
-          + Add Friends
-        </Button>
-        {cards.map(
-          (card, index) =>
-            index === 0 && (
-              <Card
-                key={`card-${index}`}
-                card={card}
-                position={index}
-                sx={{ marginBottom: "11px" }}
-              />
-            )
-        )}
+        {cards.map((card, index) => (
+          <Card
+            key={`card-${index}`}
+            card={card}
+            position={index}
+            sx={{ marginBottom: "11px" }}
+          />
+        ))}
         <BottomNav />
       </Box>
     </Box>

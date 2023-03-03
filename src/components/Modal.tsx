@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Modal as MUIModal, Typography } from "@mui/material";
 
 // primary, secondary, text
@@ -25,7 +24,6 @@ export const Modal = ({ sx = {}, open, handleClose, title, desc }) => {
           boxShadow: 24,
           p: 4,
           color: "#5E17EB",
-          // marginX: "14px",
         }}
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">

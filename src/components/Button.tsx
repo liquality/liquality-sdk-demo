@@ -1,4 +1,3 @@
-import React from "react";
 import { Button as MUIButton } from "@mui/material";
 
 // primary, secondary, text
@@ -15,7 +14,7 @@ export const Button = ({
           backgroundColor: "#5E17EB",
           color: "white",
           height: "61px",
-          fontSize: ["20px", "25px"],
+          fontSize: ["20px", "22px"],
           lineHeight: "29px",
           maxWidth: "320px",
           "&:hover": {

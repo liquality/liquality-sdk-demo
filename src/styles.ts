@@ -6,6 +6,13 @@ export const styles = {
     flexDirection: "column",
     width: "100%",
   },
+  centerRowFlex: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    width: "100%",
+  },
   skeleton: {
     display: "flex",
     flexDirection: "column",
@@ -13,6 +20,9 @@ export const styles = {
     justifyContent: "center",
     height: "100vh",
     padding: "14px 14px",
+    maxWidth: "768px",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   h1: {
     fontFamily: "Alice",

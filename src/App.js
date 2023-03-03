@@ -1,20 +1,22 @@
-import { DataContext } from "./DataContext";
-import { useEffect, useState } from "react";
+import { DataContext, CardsContext } from "./Context";
+import { useEffect, useState, useContext } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import Welcome from "./pages/Onboarding/Welcome";
 import GetStarted from "./pages/Onboarding/GetStarted";
 import MintInstructions from "./pages/Onboarding/MintInstructions";
 import Profile from "./pages/Onboarding/Profile";
 import Home from "./pages/Main/Home";
-
-import { Route, Routes } from "react-router-dom";
+import Explore from "./pages/Main/Explore";
+import Quests from "./pages/Main/Quests";
+import Lead from "./pages/Main/Lead";
+import Auth from "./pages/Auth";
 
 import { setupSDK } from "./utils";
 import Alice from "./assets/Fonts/Alice-Regular.ttf";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Auth from "./pages/Auth";
 
 const theme = createTheme({
   typography: {
@@ -53,6 +55,20 @@ const theme = createTheme({
     },
   },
 });
+const initialCardsState = [
+  {
+    name: "@IssaAmer ",
+    reactions: ["smile", "smile", "heart", "smile", "heart", "heart"],
+    quests: 2,
+    count: 6,
+  },
+  {
+    name: "@Doniawamer",
+    reactions: ["smile", "heart"],
+    quests: 2,
+    count: 2,
+  },
+];
 
 export default function App() {
   setupSDK();
@@ -60,6 +76,17 @@ export default function App() {
   const [loginResponse, setLoginResponse] = useState(
     JSON.parse(localStorage.getItem("loginResponse")) || {}
   );
+  const name =
+    loginResponse?.loginResponse?.userInfo?.name?.split(" ")[0] || "";
+  const [cards, setCards] = useState([
+    {
+      name: `@${name}`,
+      reactions: ["smile", "heart", "smile", "heart", "heart"],
+      quests: 3,
+      count: 5,
+    },
+    ...initialCardsState,
+  ]);
 
   useEffect(() => {
     localStorage.setItem("loginResponse", JSON.stringify(loginResponse));
@@ -74,16 +101,34 @@ export default function App() {
           setLoginResponse: setLoginResponse,
         }}
       >
-        <body className="stretched device-xl bg-white no-transition">
+        <CardsContext.Provider
+          value={{
+            cards: cards,
+            setCards: setCards,
+          }}
+        >
           <Routes>
-            <Route path="/" element={<Welcome />} />
-            <Route path="/start" element={<GetStarted />} />
-            <Route path="/mint" element={<MintInstructions />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/home" element={<Home />} />
+            {name ? (
+              <>
+                <Route path="/" element={<Home />} />
+                <Route path="/explore" element={<Explore />} />
+                <Route path="/quests" element={<Quests />} />
+                <Route path="/lead" element={<Lead />} />
+                <Route path="/*" element={<Home />} />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/start" element={<GetStarted />} />
+                <Route path="/mint" element={<MintInstructions />} />
+                <Route path="/profile" element={<Profile />} />
+                {/* <Route path="/auth" element={<Auth />} /> */}
+                <Route path="/home" element={<Home />} />
+                <Route path="*" element={<Welcome />} />
+              </>
+            )}
           </Routes>
-        </body>
+        </CardsContext.Provider>
       </DataContext.Provider>
     </ThemeProvider>
   );
